@@ -59,14 +59,14 @@ function Login() {
     setError("");
     setSuccess("");
 
-    // Check if user exists in localStorage
-    const existingUser = JSON.parse(localStorage.getItem("user"));
-    if (existingUser && existingUser.email === email && existingUser.password === password) {
-      setSuccess("Login successful");
-      setError("");
-      role === "junior" ? navigate("/JrDashboard") : navigate("/SrDashboard");
-      return;
-    }
+    // // Check if user exists in localStorage
+    // const existingUser = JSON.parse(localStorage.getItem("user"));
+    // if (existingUser && existingUser.email === email && existingUser.password === password) {
+    //   setSuccess("Login successful");
+    //   setError("");
+    //   role === "junior" ? navigate("/JrDashboard") : navigate("/SrDashboard");
+    //   return;
+    // }
 
     // Login API
     try {
@@ -84,6 +84,7 @@ function Login() {
         setError(response.data.error);
         setSuccess("");
       }
+      
     } catch (err) {
       setError(err.response?.data?.error || "An error occurred during login");
       setSuccess("");
